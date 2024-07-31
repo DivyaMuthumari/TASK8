@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin-top: 50px;
+    }
+    #calculator {
+      width: 200px;
+      height:300px;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #4f4d4d;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    button {
+      width:2;
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Calculator</title>
+</head>
+<body>
+  <script src="script.js"></script>
+  <script src="http://app.zenclass.in/sheets/v1/js/zen/suit/bundle.js"></script>
+  <div id="calculator">
+    <input class="input" type="text" id="display" readonly>
+    
+    <button onclick="clearDisplay(0)" style="width: 80px; color: rgb(173, 17, 17); ">C</button>
+    <button onclick="backspace()" style="color: blue;">CE</button>
+   
+     <button onclick="appendToDisplay('*')">*</button><br>
+    
+    <button onclick="appendToDisplay('7')">7</button>
+    <button onclick="appendToDisplay('8')">8</button>
+    <button onclick="appendToDisplay('9')">9</button>
+    <button onclick="appendToDisplay('/')">/</button><br>
+    
+    <button onclick="appendToDisplay('4')">4</button>
+    <button onclick="appendToDisplay('5')">5</button>
+    <button onclick="appendToDisplay('6')">6</button>
+    <button onclick="appendToDisplay('-')">-</button><br>
+    
+    <button onclick="appendToDisplay('1')">1</button>
+    <button onclick="appendToDisplay('2')">2</button>
+    <button onclick="appendToDisplay('3')">3</button>
+    <button onclick="appendToDisplay('+')">+</button><br>
+    <button onclick="appendToDisplay('0')">0</button>
+    <button onclick="appendToDisplay('00')">00</button>
+    <button onclick="clearDisplay()">.</button>
+    <button onclick="calculateResult()">=</button>
+    
+    
+  </div>
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }function backspace() {
+    var displayValue = document.getElementById('display').value;
+    displayValue = displayValue.slice(0, -1);
+    document.getElementById('display').value = displayValue;
+}
+    function calculateResult() {
+      try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+      } catch (error) {
+        document.getElementById('display').value = 'Only number are allowed';
+      }
+    }
+    
+
+  </script>
+</body>
+</html>
